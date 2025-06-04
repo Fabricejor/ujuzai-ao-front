@@ -7,6 +7,10 @@ import JobCard, { JobPost } from '@/components/cards/JobCard';
 import JobEditModal from '@/components/modals/JobEditModal';
 import { mockJobPosts } from '@/utils/mockJobPosts';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
+//icones
+import { FaFileAlt, FaFile } from 'react-icons/fa';
+import { FaRegEdit } from "react-icons/fa";
+import { FaFilePdf } from "react-icons/fa6";
 
 // Étape 1: Upload de l'appel d'offres
 function Step1UploadForm() {
@@ -28,24 +32,26 @@ function Step1UploadForm() {
           <button
             type="button"
             onClick={() => setUploadMode('file')}
-            className={`px-6 py-3 rounded-lg font-medium transition-colors ${
+            className={`px-6 py-3 rounded-lg font-medium transition-colors flex items-center justify-center ${
               uploadMode === 'file'
                 ? 'bg-amber-500 text-white'
                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
             }`}
           >
-            📄 Upload Fichier PDF
+            <FaFilePdf className="mr-2" />
+            <span>Upload Fichier PDF</span>
           </button>
           <button
             type="button"
             onClick={() => setUploadMode('text')}
-            className={`px-6 py-3 rounded-lg font-medium transition-colors ${
+            className={`px-6 py-3 rounded-lg font-medium transition-colors flex items-center justify-center ${
               uploadMode === 'text'
                 ? 'bg-amber-500 text-white'
                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
             }`}
           >
-            ✏️ Saisir le Texte
+            <FaRegEdit className="mr-2" />
+            <span>Saisir le Texte</span>
           </button>
         </div>
       </div>
@@ -77,7 +83,7 @@ function Step1UploadForm() {
             value={textContent}
             onChange={(e) => setTextContent(e.target.value)}
             placeholder="Copiez et collez le contenu de votre appel d'offres ici..."
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent resize-none"
+            className="w-full px-4 py-3 text-black border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent resize-none"
           />
           <p className="mt-2 text-sm text-gray-500">
             Caractères saisis: {textContent.length}
