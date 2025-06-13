@@ -86,6 +86,7 @@ export interface OfferDetails {
 
 // Endpoints pour l'analyse d'appels d'offres
 export const jobAnalysisAPI = {
+    // ! ETAPE 1
     // Analyser un appel d'offres à partir d'un texte
     analyzeFromText: async (text: string): Promise<JobAnalysisResponse> => {
         const response = await api.post('/job/analyze', {
@@ -108,7 +109,9 @@ export const jobAnalysisAPI = {
         });
         return response.data;
     },
+    // !FIN ETAPE 1
 
+    // ? ETAPE 2
     // Générer des fiches de poste détaillées
     generateJobSheets: async (data: JobGenerateRequest): Promise<JobGenerateResponse> => {
         const response = await api.post('/job/generate', data);
@@ -127,10 +130,11 @@ export const jobAnalysisAPI = {
             },
         });
         return response.data;
-    }
+    },
+    // !FIN ETAPE 2
 };
 
-// Endpoints pour l'étape 3 - Matching
+//* ETAPE 3 - Matching
 export const matchingAPI = {
     // Récupérer les fiches de poste sauvegardées d'un appel d'offres
     getSavedJobOffers: async (id_appel: string): Promise<SavedJobOffer[]> => {
@@ -160,7 +164,8 @@ export const matchingAPI = {
     getOfferDetails: async (id_offre: string): Promise<OfferDetails> => {
         const response = await api.get(`/job/offre/${id_offre}`);
         return response.data;
-    }
+    },
+    // *FIN ETAPE 3
 };
 
 export default api;
